@@ -1,0 +1,22 @@
+# Máquina utilizada para o lab de Python 
+# Data de criação 24.10.2021
+
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/trusty64"
+  
+  config.vm.define "lab_python" do |lab_python|
+    lab_python.vm.network "private_network", type: "dhcp"
+    lab_python.vm.hostname = "lab-python"
+    lab_python.vm.synced_folder "../", "/python"
+
+    lab_python.vm.provider  "virtualbox" do |vb|
+      vb.name = "lab_python"
+      vb.cpus = 1
+      vb.memory = 1024
+    end
+  end
+
+
+end
